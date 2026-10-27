@@ -16,7 +16,7 @@ class StudentController extends Controller
 
         return view('student.index', [
             'title' => 'Student',
-            'students' => Student::all(),
+            'students' => Student::latest()->get(),
         ]);
     }
     /**
@@ -32,7 +32,23 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate(
+            [
+                'name' => 'required',
+                'nim' => 'required|numeric|digits:12',
+            ],
+            [
+                'name.required' => 'Nama Wajib di input',
+                'nim.required' => 'Nim Wajib di input',
+                'nim.numeric' => 'Nim Wajib berupa angka',
+                'nim.digits' => 'Nim Wajib 12 digits',
+            ]
+
+        );
+
+        Student::create($validated);
+
+        return redirect('/student');
     }
 
     /**

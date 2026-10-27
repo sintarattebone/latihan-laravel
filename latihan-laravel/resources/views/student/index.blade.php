@@ -3,9 +3,9 @@
         <h1>Create Student</h1>
     </div>
 
-    <a class="btn btn-primary" href="/student/create" role="button">Create Student</a>
+    <a class="btn btn-primary mb-3" href="/student/create" role="button">Create Student</a>
 
-    <table class="table">
+    <table class="table table-bordered border-dark table-hover">
         <thead>
             <tr>
                 <th scope="col">#</th>
